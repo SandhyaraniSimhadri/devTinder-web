@@ -3,11 +3,13 @@
 //store consists of slices
 // it will replaces the values automatically. means updates happens automatically
 import { configureStore } from "@reduxjs/toolkit";
+import feedReducer from "./feedSlice";
 import userReducer from "./userSlice";
 
 const appStore = configureStore({
   reducer: {
     user: userReducer,
+    feed: feedReducer,
   },
 });
 export default appStore;

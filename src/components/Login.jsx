@@ -22,13 +22,12 @@ const Login = () => {
         // to allow cookies to get store
         { withCredentials: true },
       );
-      console.log(res);
+
       dispatch(addUser(res.data)); //adding data to store
       return navigate("/");
       // to add data to store, we need to  , dispatch an action
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");
-      console.log(err.message);
     }
   };
   return (

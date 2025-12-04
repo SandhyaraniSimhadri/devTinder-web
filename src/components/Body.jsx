@@ -15,12 +15,12 @@ const Body = () => {
   const userData = useSelector((store) => store.user);
   const fetchUser = async () => {
     if (userData) return;
-    console.log("test");
+
     try {
       const user = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
       });
-      console.log(user);
+
       dispatch(addUser(user));
     } catch (err) {
       if (err.status === 401) {
