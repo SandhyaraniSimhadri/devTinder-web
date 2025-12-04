@@ -7,6 +7,7 @@ import { addUser } from "../utils/userSlice";
 const Login = () => {
   const [emailId, setEmailId] = useState("sandhya@gmail.com");
   const [password, setPassword] = useState("Sandhya@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate(); // given by react-router-dom
 
@@ -26,6 +27,7 @@ const Login = () => {
       return navigate("/");
       // to add data to store, we need to  , dispatch an action
     } catch (err) {
+      setError(err?.response?.data || "Something went wrong");
       console.log(err.message);
     }
   };
@@ -58,6 +60,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
+          <p className="text-red-500">{error}</p>
 
           <div className="card-actions justify-start mt-1">
             <button className="btn btn-primary" onClick={handleLogin}>
